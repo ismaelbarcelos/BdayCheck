@@ -29,6 +29,11 @@ export function AppCheckNiver(){
   let statemes = Number(stateData[1])
   let stateano = Number(stateData[0])
 
+  //pegar o anos de vida 
+  let anosDvida = Math.abs(stateano - ano)
+
+ 
+
 //confete
 const [aniversario, setAniversario] = useState(false)
 
@@ -38,8 +43,8 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
   function verificar(){
 
   if(statedia == dia && statemes == mes){
-    setRes("parabens "+valorName+" voce está completando aniversario")
-    console.log("teste")
+    setRes("Feliz Aniversario "+valorName+" !")
+    
     setAniversario(true)
 
   }else{
@@ -58,12 +63,12 @@ function voltar(){
 
 return (
 
-  <div>
+  <div >
 
 
     { !mostrarResultado ?(
 
-   <div >
+   <div className="p-50">
 
        <motion.div 
   initial={{ opacity: 0, y: 40 }}
@@ -71,9 +76,9 @@ return (
   transition={{ duration: 1.6 }}
   
 >
-  <div className=" max-w-md mx-auto mt-20 bg-white border p-9 rounded-xl shadow-lg border-b-blue-500      flex items-center justify-center"> 
+  <div className=" max-w-md mx-auto bg-white  p-9 rounded-xl shadow-lg flex items-center justify-center"> 
 
-    <div className="flex-col text-center">
+    <div className="flex-col text-center ">
 
     
      <h1>Qual o seu nome?</h1>
@@ -81,7 +86,7 @@ return (
 <h1>Quando você nasceu?</h1>
 <input value={valorData} onChange={e=>setData(e.target.value)} className="p-5 rounded-xl w-90 border-purple-300 border" type="date" name="" id="" />
 
-<button className="bg-blue-900 p-5 block w-80 rounded-xl mx-auto m-9" onClick={verificar}>Verificar</button>
+<button className="bg-gradient-to-l  from-purple-300 to-purple-500   p-5 block w-80 rounded-xl mx-auto m-9" onClick={verificar}>Verificar</button>
 
 </div>
 </div>
@@ -96,12 +101,26 @@ return (
   
 >
 
-<div className=" max-w-md mx-auto mt-20 bg-white border p-9 rounded-xl shadow-lg  border-b-blue-500">
+<div className="text-center max-w-md mx-auto mt-20 bg-white border p-9 rounded-xl shadow-lg  border-b-blue-500">
 
    {aniversario && <Confetti />}
 
+<img className="w-30 mx-auto m-5 " src="/cake.png" alt="bolo e aniversario" />
  
- <h1>{valorRes}</h1>
+ <h1 className="text-xl">{valorRes}</h1>
+
+ <motion.p 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.9 }}
+                className="text-lg text-gray-500 mb-8"
+              >
+                <h1>Hoje você completa {anosDvida} anos de vida!</h1>
+               <h1>Que este novo ano de vida seja repleto de alegrias, conquistas e muita felicidade! 🥳🎂🙏</h1> 
+              </motion.p>
+
+
+
 
   <button onClick={voltar} className="bg-amber-800">voltar</button>
 
