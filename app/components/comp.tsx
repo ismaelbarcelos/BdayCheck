@@ -73,20 +73,21 @@ return (
 
     { !mostrarResultado ?(
 
-   <div className="flex-col text-center p-10">
+   <div className="flex-col text-center ">
 
   <img className="w-40 mx-auto" src="/cake2.png" alt="" />
 
       <h1 className="text-5xl text-purple-400 m-6 ">Verificador de Aniversário</h1>
- 
-  <div className=" max-w-md mx-auto bg-white  p-9 rounded-xl shadow-lg flex items-center justify-center  w-full"> 
 
-      <motion.div 
+       <motion.div 
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1.6 }}
   
 >
+  <div className=" max-w-md mx-auto bg-white  p-9 rounded-xl shadow-lg flex items-center justify-center  "> 
+
+
 
 
     <div className="flex-col text-center ">
@@ -102,9 +103,9 @@ return (
 <button className="bg-gradient-to-l  from-purple-300 to-purple-500   p-5 block w-80 rounded-xl mx-auto m-9 text-blue-50" onClick={verificar}>Verificar</button>
 
 </div>
-</motion.div>
-</div>
 
+</div>
+</motion.div>
 </div>
     ) : aniversario === true ? ( 
 
