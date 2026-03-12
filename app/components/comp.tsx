@@ -53,7 +53,7 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
 
   }else{
     setAniversario(false)
-    setRes("Ainda não é seu aniverdsario. Mas não se preocupe, cada dia é especial! Volte no dia certo para receber seus parabéns")
+    setRes("Ainda não é seu aniversário. Mas não se preocupe, cada dia é especial! Volte no dia certo para receber seus parabéns.🙂")
   }
    
  setMostrarResultado(true)
