@@ -52,6 +52,8 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
 //função voltar para dados
 function voltar(){
   setMostrarResultado(false)
+  setData("")
+  setName("")
 }
 
 return (
