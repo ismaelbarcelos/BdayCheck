@@ -68,7 +68,7 @@ function voltar(){
 
 return (
 
-  <div >
+  <div className="ml-5 mr-5">
 
 
     { !mostrarResultado ?(
