@@ -194,7 +194,7 @@ return (
               <h1 className="text-5xl text-purple-400 mt-6 mb-5"  >Olá {valorName }!</h1>
 
                <h1 className="text-2xl">{valorRes}</h1>
-               <h2>Falta {mesesParaAniversario} mes(es) e {diasParaAniversario} dias ⏰ </h2>
+               <h2 className="text-red-400">Falta {mesesParaAniversario} mes(es) e {diasParaAniversario} dias ⏰ </h2>
 
                 <img className="w-30 mx-auto m-5 " src="/party-hat.png" alt="chapel de aniversario" />
 
