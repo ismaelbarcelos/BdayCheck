@@ -12,6 +12,9 @@ export default function Home() {
       
       <AppCheckNiver/>
 
+
+      <footer className='text-center mt-26'>&copy; Ismael Barcelos 2026 </footer>
+
      
     </div>
 
