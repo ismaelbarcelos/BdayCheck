@@ -6,6 +6,7 @@ import { useState } from "react"
 import Confetti from "react-confetti"
 import { motion } from "framer-motion"
 import { div, h1 } from "framer-motion/client"
+import { intervalToDuration } from 'date-fns';
 
 
 
@@ -36,7 +37,22 @@ export function AppCheckNiver(){
   let anosDvida = Math.abs(stateano - ano)
   let mesDvida = Math.abs(statemes - mes)
 
-  
+  // calcular o tempo que falta para o aniversario 
+   
+  let SeuAniversario = new Date(time.getFullYear(), statemes-1, statedia);
+
+
+  if (SeuAniversario < time) {
+     SeuAniversario.setFullYear(time.getFullYear() + 1);
+    }
+
+  const duration = intervalToDuration({ start: time, end: SeuAniversario });
+
+    const mesesParaAniversario = duration.months;
+    const diasParaAniversario = duration.days;
+
+  // fim de calcular o tempo de aniversario 
+
 //confete
 const [aniversario, setAniversario] = useState(false)
 
@@ -105,7 +121,7 @@ return (
 
 <input required value={valorData} onChange={e=>setData(e.target.value)} className="p-5 rounded-xl w-80 border-purple-300 border" type="date" name="" id="" />
 
-<button type="submit" className="bg-gradient-to-l  from-purple-300 to-purple-500   p-5 block w-80 rounded-xl mx-auto m-9 text-blue-50" >Verificar</button>
+<button type="submit" className="bg-gradient-to-l  from-purple-300 to-purple-500   p-5 block w-80 rounded-xl mx-auto m-9 text-blue-50" >✨ Verificar </button>
 </form>
 </div>
 
@@ -140,7 +156,7 @@ return (
                 
  
                     <h1 className="text-5xl text-purple-400 mt-6"> Feliz Aniversário <span className="text-5xl">{valorRes}!</span></h1>
-                <h1>Hoje você completa {anosDvida} anos de vida!</h1>
+                <h1 className="text-2xl">Hoje você completa {anosDvida} anos de vida!</h1>
                <h1>Que este novo ano de vida seja repleto de alegrias, conquistas e muita felicidade! 🥳🎂🙏</h1> 
               </motion.p>
 
@@ -178,6 +194,7 @@ return (
               <h1 className="text-5xl text-purple-400 mt-6 mb-5"  >Olá {valorName }!</h1>
 
                <h1 className="text-2xl">{valorRes}</h1>
+               <h2>Falta {mesesParaAniversario} mes(es) e {diasParaAniversario} dias ⏰ </h2>
 
                 <img className="w-30 mx-auto m-5 " src="/party-hat.png" alt="chapel de aniversario" />
 
