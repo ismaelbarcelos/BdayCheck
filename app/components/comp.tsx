@@ -73,7 +73,7 @@ return (
 
     { !mostrarResultado ?(
 
-   <div className="flex-col text-center ">
+   <div className="flex-col text-center p-4">
 
   <img className="w-40 mx-auto" src="/cake2.png" alt="" />
 
@@ -90,15 +90,15 @@ return (
 
 
 
-    <div className="flex-col text-center ">
+    <div className="flex-col ">
     
-     <h1 className="flex  text-3xl text-gray-500 m-3"><img className="w-10 mb-3 ml-4 mr-4" src="/social.png" alt="" />  Qual o seu nome?</h1>
+     <h1 className="flex  text-3xl text-gray-500 m-"><img className="w-10 mb-3 ml-4 mr-4" src="/social.png" alt="" />  Qual o seu nome?</h1>
 
-<input placeholder="Digite seu nome..." value={valorName} onChange={e=>setName(e.target.value)} className="border border-purple-300  p-5 rounded-xl w-90" type="text" name="" id="" />
+<input placeholder="Digite seu nome..." value={valorName} onChange={e=>setName(e.target.value)} className="border border-purple-300  p-5 rounded-xl w-80" type="text" name="" id="" />
 
-<h1 className=" flex text-3xl text-gray-500 m-3 "> <img className="w-10 mr-2 " src="/calendar.png" alt="" />      Quando você nasceu?</h1>
+<h1 className=" flex text-3xl text-gray-500 mt-4 "> <img className="w-10 mr-1 mb-3 ml-4 " src="/calendar.png" alt="" /> O seu nascimento?</h1>
 
-<input value={valorData} onChange={e=>setData(e.target.value)} className="p-5 rounded-xl w-90 border-purple-300 border" type="date" name="" id="" />
+<input value={valorData} onChange={e=>setData(e.target.value)} className="p-5 rounded-xl w-80 border-purple-300 border" type="date" name="" id="" />
 
 <button className="bg-gradient-to-l  from-purple-300 to-purple-500   p-5 block w-80 rounded-xl mx-auto m-9 text-blue-50" onClick={verificar}>Verificar</button>
 
