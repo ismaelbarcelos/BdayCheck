@@ -9,6 +9,8 @@ import { div, h1 } from "framer-motion/client"
 import { intervalToDuration } from 'date-fns';
 
 
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
 
 
 
@@ -17,8 +19,8 @@ export function AppCheckNiver(){
 
  
 
-  const [valorName,setName] = useState("")
-  const [valorData, setData] = useState("")
+ 
+
   const [valorRes , setRes] = useState("")
 
   const time =new Date()
@@ -28,16 +30,48 @@ export function AppCheckNiver(){
   
   
 // pegando as datas do setData do useState()
-  const stateData = valorData.split("-")
-  let statedia = Number(stateData[2])
-  let statemes = Number(stateData[1])
-  let stateano = Number(stateData[0])
+ // const stateData = valorData.split("-")
+// let statedia = Number(stateData[2])
+// let statemes = Number(stateData[1])
+// let stateano = Number(stateData[0])
 
   //pegar o anos de vida 
-  let anosDvida = Math.abs(stateano - ano)
-  let mesDvida = Math.abs(statemes - mes)
+//  let anosDvida = Math.abs(stateano - ano)
+// let mesDvida = Math.abs(statemes - mes)
 
-  // calcular o tempo que falta para o aniversario 
+const [valorData, setData] = useState<Date | null>(null)
+ const [valorName,setName] = useState("")
+  
+
+//confete
+const [aniversario, setAniversario] = useState(false)
+
+//painel 
+const [mostrarResultado, setMostrarResultado] = useState(false)
+
+ const [mesesParaAniversario, setMesesParaAniversario] = useState(0)
+  const [diasParaAniversario, setDiasParaAniversario] = useState(0)
+
+  function verificar(e:any){
+    e.preventDefault()
+
+ 
+    if (!valorData || !valorName)return
+
+   const statedia = valorData.getDate()
+const statemes = valorData.getMonth()+1
+
+
+
+
+
+  const time =new Date()
+  let mes = time.getMonth()+1
+  let dia = time.getDate()
+  let ano = time.getFullYear()
+
+
+// calcular o tempo que falta para o aniversario 
    
   let SeuAniversario = new Date(time.getFullYear(), statemes-1, statedia);
 
@@ -48,19 +82,35 @@ export function AppCheckNiver(){
 
   const duration = intervalToDuration({ start: time, end: SeuAniversario });
 
-    const mesesParaAniversario = duration.months;
-    const diasParaAniversario = duration.days;
+  //  const mesesParaAniversario = duration.months;
+  //  const diasParaAniversario = duration.days;
+
+   setMesesParaAniversario(duration.months ?? 0)
+    setDiasParaAniversario(duration.days ?? 0)
 
   // fim de calcular o tempo de aniversario 
 
-//confete
-const [aniversario, setAniversario] = useState(false)
 
-//painel 
-const [mostrarResultado, setMostrarResultado] = useState(false)
+ 
+ //const [valorRes , setRes] = useState("")
+
+ 
 
 
-  function verificar(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   if(statedia == dia && statemes == mes){
     setRes(valorName)
@@ -75,10 +125,10 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
  setMostrarResultado(true)
 }
 
-//função voltar para dados
+//função voltar para dar os dados
 function voltar(){
   setMostrarResultado(false)
-  setData("")
+  setData(null)
   setName("")
 }
 
@@ -117,9 +167,20 @@ return (
 
 <input required  placeholder="Digite seu nome..." value={valorName} onChange={e=>setName(e.target.value)} className="border border-purple-300  p-5 rounded-xl w-80" type="text" name="" id="" />
 
-<h1 className=" flex text-3xl text-gray-500 mt-4 "> <img className="w-10 mr-1 mb-3 ml-4 " src="/calendar.png" alt="" /> O seu nascimento?</h1>
+<h1 className=" flex text-3xl text-gray-500 mt-4 "> <img className="w-10 mr-1 mb-3 ml-4 " src="/calendar.png" alt="" />Seu nascimento?</h1>
 
-<input required value={valorData} onChange={e=>setData(e.target.value)} className="p-5 rounded-xl w-80 border-purple-300 border" type="date" name="" id="" />
+ 
+<DatePicker
+  selected={valorData}
+  onChange={(date:Date|null) => setData(date)}
+  dateFormat="dd/MM/yyyy"
+  placeholderText="dd/mm/aaaa"
+  showYearDropdown
+  scrollableYearDropdown
+  yearDropdownItemNumber={100}
+  className="border p-4 rounded-xl w-80"
+  
+/>
 
 <button type="submit" className="bg-gradient-to-l  from-purple-300 to-purple-500   p-5 block w-80 rounded-xl mx-auto m-9 text-blue-50" >✨ Verificar </button>
 </form>
@@ -156,7 +217,7 @@ return (
                 
  
                     <h1 className="text-5xl text-purple-400 mt-6"> Feliz Aniversário <span className="text-5xl">{valorRes}!</span></h1>
-                <h1 className="text-2xl">Hoje você completa {anosDvida} anos de vida!</h1>
+                <h1 className="text-2xl">Hoje você completa  anos de vida!</h1>
                <h1>Que este novo ano de vida seja repleto de alegrias, conquistas e muita felicidade! 🥳🎂🙏</h1> 
               </motion.p>
 
@@ -194,7 +255,7 @@ return (
               <h1 className="text-5xl text-purple-400 mt-6 mb-5"  >Olá {valorName }!</h1>
 
                <h1 className="text-2xl">{valorRes}</h1>
-               <h2 className="text-red-400">Falta {mesesParaAniversario} mes(es) e {diasParaAniversario} dias ⏰ </h2>
+               <h2 className="text-red-400">Falta {mesesParaAniversario} mes(es) e {diasParaAniversario} dia(s) ⏰ </h2>
 
                 <img className="w-30 mx-auto m-5 " src="/party-hat.png" alt="chapel de aniversario" />
 
