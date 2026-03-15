@@ -51,6 +51,7 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
 
  const [mesesParaAniversario, setMesesParaAniversario] = useState(0)
   const [diasParaAniversario, setDiasParaAniversario] = useState(0)
+  const[anoDevida,setanoDEvida] = useState(0)
 
   function verificar(e:any){
     e.preventDefault()
@@ -60,6 +61,7 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
 
    const statedia = valorData.getDate()
 const statemes = valorData.getMonth()+1
+const stateano = valorData.getFullYear()
 
 
 
@@ -87,8 +89,10 @@ const statemes = valorData.getMonth()+1
 
    setMesesParaAniversario(duration.months ?? 0)
     setDiasParaAniversario(duration.days ?? 0)
+   setanoDEvida(Math.abs(stateano - ano ))
 
   // fim de calcular o tempo de aniversario 
+
 
 
  
@@ -217,7 +221,7 @@ return (
                 
  
                     <h1 className="text-5xl text-purple-400 mt-6"> Feliz Aniversário <span className="text-5xl">{valorRes}!</span></h1>
-                <h1 className="text-2xl">Hoje você completa  anos de vida!</h1>
+                <h1 className="text-2xl">Hoje você completa {anoDevida}  anos de vida!</h1>
                <h1>Que este novo ano de vida seja repleto de alegrias, conquistas e muita felicidade! 🥳🎂🙏</h1> 
               </motion.p>
 
