@@ -26,18 +26,10 @@ export function AppCheckNiver(){
   const time =new Date()
   let mes = time.getMonth()+1
   let dia = time.getDate()
-  let ano = time.getFullYear()
+ // let ano = time.getFullYear()
   
   
-// pegando as datas do setData do useState()
- // const stateData = valorData.split("-")
-// let statedia = Number(stateData[2])
-// let statemes = Number(stateData[1])
-// let stateano = Number(stateData[0])
 
-  //pegar o anos de vida 
-//  let anosDvida = Math.abs(stateano - ano)
-// let mesDvida = Math.abs(statemes - mes)
 
 const [valorData, setData] = useState<Date | null>(null)
  const [valorName,setName] = useState("")
@@ -52,6 +44,21 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
  const [mesesParaAniversario, setMesesParaAniversario] = useState(0)
   const [diasParaAniversario, setDiasParaAniversario] = useState(0)
   const[anoDevida,setanoDEvida] = useState(0)
+
+  let Diasfaltando;
+  let Mesesfaltando;
+ if(diasParaAniversario >1 ){
+   Diasfaltando = diasParaAniversario +" dias "
+  }else {
+    Diasfaltando = diasParaAniversario + "dia"
+  }
+
+  if(mesesParaAniversario >1){
+    Mesesfaltando = mesesParaAniversario + " meses"
+  }else{
+    Mesesfaltando = mesesParaAniversario + " mês"
+  }
+
 
   function verificar(e:any){
     e.preventDefault()
@@ -68,8 +75,7 @@ const stateano = valorData.getFullYear()
 
 
   const time =new Date()
-  let mes = time.getMonth()+1
-  let dia = time.getDate()
+ 
   let ano = time.getFullYear()
 
 
@@ -93,28 +99,6 @@ const stateano = valorData.getFullYear()
 
   // fim de calcular o tempo de aniversario 
 
-
-
- 
- //const [valorRes , setRes] = useState("")
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
   if(statedia == dia && statemes == mes){
     setRes(valorName)
@@ -259,7 +243,7 @@ return (
               <h1 className="text-5xl text-purple-400 mt-6 mb-5"  >Olá {valorName }!</h1>
 
                <h1 className="text-2xl">{valorRes}</h1>
-               <h2 className="text-red-400">Falta {mesesParaAniversario} mes(es) e {diasParaAniversario} dia(s) ⏰ </h2>
+               <h2 className="text-red-400">Faltam {Mesesfaltando} e  {Diasfaltando} ⏰ </h2>
 
                 <img className="w-30 mx-auto m-5 " src="/party-hat.png" alt="chapel de aniversario" />
 
