@@ -63,15 +63,12 @@ const [mostrarResultado, setMostrarResultado] = useState(false)
   function verificar(e:any){
     e.preventDefault()
 
- 
+// recebe os valores recebido dos dados do input pelo useState() 
     if (!valorData || !valorName)return
 
    const statedia = valorData.getDate()
 const statemes = valorData.getMonth()+1
 const stateano = valorData.getFullYear()
-
-
-
 
 
   const time =new Date()
@@ -90,8 +87,6 @@ const stateano = valorData.getFullYear()
 
   const duration = intervalToDuration({ start: time, end: SeuAniversario });
 
-  //  const mesesParaAniversario = duration.months;
-  //  const diasParaAniversario = duration.days;
 
    setMesesParaAniversario(duration.months ?? 0)
     setDiasParaAniversario(duration.days ?? 0)
@@ -124,11 +119,7 @@ return (
 
   <div >
 
-
     { !mostrarResultado ?(
-
- 
-
 
    <div className="flex-col text-center p-4">
 
@@ -139,11 +130,9 @@ return (
   
 >
 
-
   <img className="w-40 mx-auto" src="/cake2.png" alt="" />
 
       <h1 className="text-5xl text-purple-400 m-6 ">Verificador de Aniversário</h1>
-
 
   <div className=" max-w-md mx-auto bg-white  p-9 rounded-xl shadow-lg flex items-center justify-center  "> 
 
@@ -153,20 +142,20 @@ return (
     
 <form  onSubmit={verificar}>
 
-<input required  placeholder="Digite seu nome..." value={valorName} onChange={e=>setName(e.target.value)} className="border border-purple-300  p-5 rounded-xl w-80" type="text" name="" id="" />
+<input required  placeholder="Digite seu nome..." value={valorName} onChange={e=>setName(e.target.value)} className="border border-purple-300  p-5 rounded-xl w-80  text-black" type="text" name="" id="" />
 
 <h1 className=" flex text-3xl text-gray-500 mt-4 "> <img className="w-10 mr-1 mb-3 ml-4 " src="/calendar.png" alt="" />Seu nascimento?</h1>
 
  
-<DatePicker
+<DatePicker 
   selected={valorData}
   onChange={(date:Date|null) => setData(date)}
-  dateFormat="dd/MM/yyyy"
+  dateFormat ="dd/MM/yyyy"
   placeholderText="dd/mm/aaaa"
   showYearDropdown
   scrollableYearDropdown
   yearDropdownItemNumber={100}
-  className="border p-4 rounded-xl w-80"
+  className="border p-4 rounded-xl w-80  border-purple-300 text-black"
   
 />
 
@@ -180,8 +169,6 @@ return (
 
     ) : aniversario === true ? ( 
 
-    
-
 <motion.div className="mr-5 ml-5"
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
@@ -193,8 +180,6 @@ return (
 <div className="text-center max-w-md mx-auto  bg-white rounded-xl shadow-lg p-9">
 
    {aniversario && <Confetti />}
-
-
 
  <motion.p 
                 initial={{ opacity: 0 }}
@@ -227,7 +212,6 @@ return (
 
 <div className="text-center max-w-md mx-auto  bg-white  p-9 rounded-xl shadow-lg ">
   
-
    {aniversario && <Confetti />}
 
  <motion.p 
@@ -237,9 +221,6 @@ return (
                 className="text-lg text-gray-500 mb-8"
               >
             
-
-               
-
               <h1 className="text-5xl text-purple-400 mt-6 mb-5"  >Olá {valorName }!</h1>
 
                <h1 className="text-2xl">{valorRes}</h1>
